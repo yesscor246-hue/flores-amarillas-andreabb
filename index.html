@@ -33,8 +33,8 @@ body {
     touch-action: none;
 
     user-select: none;
-
     -webkit-user-select: none;
+
 }
 
 body {
@@ -45,6 +45,7 @@ body {
         Georgia,
         "Times New Roman",
         serif;
+
 }
 
 
@@ -66,6 +67,7 @@ body {
     background: #000;
 
     touch-action: none;
+
 }
 
 
@@ -100,7 +102,8 @@ body {
         );
 
     transition:
-        opacity 1.8s ease;
+        opacity 1.5s ease;
+
 }
 
 #inicio.ocultar {
@@ -108,6 +111,7 @@ body {
     opacity: 0;
 
     pointer-events: none;
+
 }
 
 .flor-inicio {
@@ -126,6 +130,7 @@ body {
             0 0 15px
             rgba(255,210,0,.95)
         );
+
 }
 
 #inicio h1 {
@@ -154,6 +159,7 @@ body {
         0 0 18px #ffd000,
 
         0 0 35px #ff9d00;
+
 }
 
 #inicio p {
@@ -172,6 +178,7 @@ body {
 
         0 0 18px
         rgba(255,215,100,.8);
+
 }
 
 
@@ -204,9 +211,10 @@ body {
 
     transition:
 
-        opacity 2.8s ease,
+        opacity 2.5s ease,
 
-        transform 2.8s ease;
+        transform 2.5s ease;
+
 }
 
 #mensaje.mostrar {
@@ -216,6 +224,7 @@ body {
     transform:
         translate(-50%,-50%)
         scale(1);
+
 }
 
 #mensaje h2 {
@@ -251,6 +260,7 @@ body {
         brilloTitulo 2.5s
         ease-in-out
         infinite alternate;
+
 }
 
 #mensaje p {
@@ -279,15 +289,13 @@ body {
         0 0 12px white,
 
         0 0 22px
-        rgba(255,220,120,.95),
-
-        0 2px 10px
-        rgba(0,0,0,.9);
+        rgba(255,220,120,.95);
 
     animation:
         brilloTexto 2.5s
         ease-in-out
         infinite alternate;
+
 }
 
 .corazon {
@@ -306,11 +314,12 @@ body {
         drop-shadow(
             0 0 15px red
         );
+
 }
 
 
 /* =========================================
-   FOTOS ORBITANDO
+   FOTOS
 ========================================= */
 
 #fotos-orbita {
@@ -322,6 +331,7 @@ body {
     z-index: 18;
 
     pointer-events: none;
+
 }
 
 .foto-orbita {
@@ -338,7 +348,8 @@ body {
 
     border-radius: 50%;
 
-    border: 3px solid
+    border:
+        3px solid
         rgba(255,220,80,.95);
 
     box-shadow:
@@ -350,15 +361,8 @@ body {
         0 0 35px
         rgba(255,160,20,.8);
 
-    transform-origin:
-        center center;
+    will-change: transform;
 
-    transition:
-        width .3s ease,
-        height .3s ease;
-
-    will-change:
-        transform;
 }
 
 
@@ -377,6 +381,7 @@ body {
     pointer-events: none;
 
     overflow: hidden;
+
 }
 
 .flor-cayendo {
@@ -389,14 +394,19 @@ body {
 
     filter:
         drop-shadow(
-            0 0 8px
-            rgba(255,215,0,.95)
+            0 0 7px
+            rgba(255,215,0,.9)
         );
 
     animation:
         caerFlor
         linear
         forwards;
+
+    will-change:
+        transform,
+        opacity;
+
 }
 
 @keyframes caerFlor {
@@ -412,11 +422,13 @@ body {
             rotate(0deg);
 
         opacity: 0;
+
     }
 
     10% {
 
         opacity: .95;
+
     }
 
     50% {
@@ -430,6 +442,7 @@ body {
             rotate(180deg);
 
         opacity: 1;
+
     }
 
     100% {
@@ -443,7 +456,9 @@ body {
             rotate(360deg);
 
         opacity: 0;
+
     }
+
 }
 
 
@@ -459,24 +474,31 @@ body {
 
     filter:
         drop-shadow(
-            0 0 9px
-            rgba(255,215,0,.95)
+            0 0 8px
+            rgba(255,215,0,.9)
         );
 
     animation:
         entrarLateral
         ease-in-out
         forwards;
+
+    will-change:
+        transform,
+        opacity;
+
 }
 
 .flor-izquierda {
 
     left: -70px;
+
 }
 
 .flor-derecha {
 
     right: -70px;
+
 }
 
 @keyframes entrarLateral {
@@ -489,11 +511,13 @@ body {
             translateX(0)
             rotate(0deg)
             scale(.6);
+
     }
 
     20% {
 
         opacity: .9;
+
     }
 
     50% {
@@ -506,11 +530,13 @@ body {
             )
             rotate(180deg)
             scale(1);
+
     }
 
     80% {
 
         opacity: .85;
+
     }
 
     100% {
@@ -525,7 +551,9 @@ body {
             )
             rotate(360deg)
             scale(.7);
+
     }
+
 }
 
 
@@ -569,37 +597,51 @@ body {
 
     transition:
         opacity 1s ease;
+
 }
 
 #ayuda.ocultar {
 
     opacity: 0;
+
 }
 
+
+/* =========================================
+   ANIMACIONES
+========================================= */
 
 @keyframes latido {
 
     0% {
 
-        transform: scale(1);
+        transform:
+            scale(1);
+
     }
 
     50% {
 
-        transform: scale(1.12);
+        transform:
+            scale(1.12);
+
     }
 
     100% {
 
-        transform: scale(1);
+        transform:
+            scale(1);
+
     }
+
 }
 
 @keyframes brilloTitulo {
 
     from {
 
-        transform: scale(1);
+        transform:
+            scale(1);
 
         text-shadow:
 
@@ -608,11 +650,13 @@ body {
             0 0 14px #ffd000,
 
             0 0 25px #ffae00;
+
     }
 
     to {
 
-        transform: scale(1.015);
+        transform:
+            scale(1.015);
 
         text-shadow:
 
@@ -620,10 +664,10 @@ body {
 
             0 0 20px #ffd000,
 
-            0 0 38px #ffae00,
+            0 0 38px #ffae00;
 
-            0 0 55px #ff7900;
     }
+
 }
 
 @keyframes brilloTexto {
@@ -638,6 +682,7 @@ body {
 
             0 0 18px
             rgba(255,220,120,.7);
+
     }
 
     to {
@@ -650,44 +695,91 @@ body {
 
             0 0 32px
             rgba(255,220,120,1);
+
     }
+
 }
 
+
+/* =========================================
+   MODO CELULAR
+========================================= */
 
 @media (max-width:600px) {
 
     #inicio h1 {
 
-        font-size:25px;
+        font-size: 25px;
+
     }
 
     #mensaje h2 {
 
-        font-size:29px;
+        font-size: 29px;
+
     }
 
     #mensaje p {
 
-        font-size:20px;
+        font-size: 20px;
+
     }
 
     .foto-orbita {
 
-        width:90px;
-        height:90px;
+        width: 90px;
+        height: 90px;
+
+        box-shadow:
+
+            0 0 5px white,
+
+            0 0 10px #ffd000;
+
     }
 
     .corazon {
 
-        font-size:52px;
+        font-size: 52px;
+
     }
 
     #ayuda {
 
-        font-size:13px;
+        font-size: 13px;
 
-        bottom:22px;
+        bottom: 22px;
+
     }
+
+    .flor-cayendo,
+    .flor-lateral {
+
+        filter: none;
+
+    }
+
+}
+
+
+/* =========================================
+   MODO DE BAJO RENDIMIENTO
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .flor-cayendo,
+    .flor-lateral,
+    .corazon,
+    .flor-inicio,
+    #mensaje h2,
+    #mensaje p {
+
+        animation-duration:
+            3s;
+
+    }
+
 }
 
 </style>
@@ -729,7 +821,7 @@ body {
 <div id="fotos-orbita">
 
     <img
-        src="foto1.jpeg"
+        src="fotos1.jpeg"
         class="foto-orbita"
         id="foto1">
 
@@ -760,10 +852,8 @@ body {
 <div id="mensaje">
 
     <h2>
-
         Feliz día de las flores amarillas,
         mi Andrea 🌻
-
     </h2>
 
     <p>
@@ -810,6 +900,16 @@ body {
 
 
 /* =========================================
+   CONFIGURACIÓN
+========================================= */
+
+const esMovil =
+    window.matchMedia(
+        "(max-width: 600px)"
+    ).matches;
+
+
+/* =========================================
    CANVAS
 ========================================= */
 
@@ -819,7 +919,12 @@ const canvas =
     );
 
 const ctx =
-    canvas.getContext("2d");
+    canvas.getContext(
+        "2d",
+        {
+            alpha: false
+        }
+    );
 
 
 let width;
@@ -832,7 +937,7 @@ let centerY;
 let dpr =
     Math.min(
         window.devicePixelRatio || 1,
-        1.5
+        esMovil ? 1 : 1.25
     );
 
 
@@ -850,11 +955,13 @@ function resize() {
     centerY =
         height / 2;
 
+
     dpr =
         Math.min(
             window.devicePixelRatio || 1,
-            1.5
+            esMovil ? 1 : 1.25
         );
+
 
     canvas.width =
         width * dpr;
@@ -862,11 +969,13 @@ function resize() {
     canvas.height =
         height * dpr;
 
+
     canvas.style.width =
         width + "px";
 
     canvas.style.height =
         height + "px";
+
 
     ctx.setTransform(
         dpr,
@@ -876,12 +985,15 @@ function resize() {
         0,
         0
     );
+
 }
+
 
 window.addEventListener(
     "resize",
     resize
 );
+
 
 resize();
 
@@ -892,10 +1004,19 @@ resize();
 
 const particles = [];
 
+
+/*
+   PC:
+   650 partículas
+
+   CELULAR:
+   260 partículas
+*/
+
 const particleCount =
-    width < 600
-        ? 600
-        : 850;
+    esMovil
+        ? 260
+        : 650;
 
 
 for (
@@ -908,7 +1029,8 @@ for (
 
         angle:
             Math.random()
-            * Math.PI * 2,
+            * Math.PI
+            * 2,
 
         radius:
             45
@@ -921,14 +1043,14 @@ for (
 
         size:
             Math.random()
-            * 2.2
+            * 2
             + .45,
 
         speed:
-            .0008
+            .0007
             +
             Math.random()
-            * .0018,
+            * .0015,
 
         arm:
             Math.random()
@@ -939,7 +1061,9 @@ for (
             +
             Math.random()
             * .65
+
     });
+
 }
 
 
@@ -978,6 +1102,7 @@ canvas.addEventListener(
         canvas.setPointerCapture(
             e.pointerId
         );
+
     }
 );
 
@@ -989,8 +1114,10 @@ canvas.addEventListener(
         if (!dragging)
             return;
 
+
         const now =
             performance.now();
+
 
         const dx =
             e.clientX - lastX;
@@ -998,11 +1125,13 @@ canvas.addEventListener(
         const dy =
             e.clientY - lastY;
 
+
         rotation +=
             dx * .008;
 
         rotation +=
             dy * .002;
+
 
         const elapsed =
             Math.max(
@@ -1010,10 +1139,12 @@ canvas.addEventListener(
                 now - lastTime
             );
 
+
         velocity =
             dx /
             elapsed *
             .025;
+
 
         lastX =
             e.clientX;
@@ -1023,6 +1154,7 @@ canvas.addEventListener(
 
         lastTime =
             now;
+
     }
 );
 
@@ -1032,6 +1164,7 @@ canvas.addEventListener(
     () => {
 
         dragging = false;
+
     }
 );
 
@@ -1041,6 +1174,7 @@ canvas.addEventListener(
     () => {
 
         dragging = false;
+
     }
 );
 
@@ -1051,15 +1185,20 @@ canvas.addEventListener(
 
 function drawBlackHole() {
 
+
     const halo =
         ctx.createRadialGradient(
+
             centerX,
             centerY,
             35,
+
             centerX,
             centerY,
-            170
+            160
+
         );
+
 
     halo.addColorStop(
         0,
@@ -1068,12 +1207,12 @@ function drawBlackHole() {
 
     halo.addColorStop(
         .35,
-        "rgba(255,190,30,.16)"
+        "rgba(255,190,30,.15)"
     );
 
     halo.addColorStop(
         .60,
-        "rgba(255,140,10,.10)"
+        "rgba(255,140,10,.08)"
     );
 
     halo.addColorStop(
@@ -1081,15 +1220,17 @@ function drawBlackHole() {
         "rgba(0,0,0,0)"
     );
 
+
     ctx.fillStyle =
         halo;
+
 
     ctx.beginPath();
 
     ctx.arc(
         centerX,
         centerY,
-        170,
+        160,
         0,
         Math.PI * 2
     );
@@ -1100,69 +1241,67 @@ function drawBlackHole() {
     ctx.strokeStyle =
         "rgba(255,215,80,.85)";
 
-    ctx.lineWidth = 4;
+    ctx.lineWidth =
+        4;
 
-    ctx.shadowBlur = 18;
+
+    ctx.shadowBlur =
+        esMovil
+            ? 8
+            : 18;
 
     ctx.shadowColor =
         "#ffc928";
 
+
     ctx.beginPath();
 
+
     ctx.ellipse(
+
         centerX,
         centerY,
+
         105,
         32,
+
         0,
+
         0,
         Math.PI * 2
+
     );
+
 
     ctx.stroke();
 
-    ctx.shadowBlur = 0;
 
+    ctx.shadowBlur =
+        0;
 
-    const black =
-        ctx.createRadialGradient(
-            centerX - 15,
-            centerY - 15,
-            3,
-            centerX,
-            centerY,
-            85
-        );
-
-    black.addColorStop(
-        0,
-        "#000"
-    );
-
-    black.addColorStop(
-        .8,
-        "#000"
-    );
-
-    black.addColorStop(
-        1,
-        "#050505"
-    );
 
     ctx.fillStyle =
-        black;
+        "#000";
+
 
     ctx.beginPath();
 
+
     ctx.arc(
+
         centerX,
         centerY,
+
         78,
+
         0,
         Math.PI * 2
+
     );
 
+
     ctx.fill();
+
 }
 
 
@@ -1172,8 +1311,10 @@ function drawBlackHole() {
 
 function drawGalaxy(time) {
 
+
     ctx.fillStyle =
         "#000";
+
 
     ctx.fillRect(
         0,
@@ -1186,9 +1327,12 @@ function drawGalaxy(time) {
     if (!dragging) {
 
         rotation +=
-            .0008 + velocity;
+            .0007
+            +
+            velocity;
 
         velocity *= .96;
+
     }
 
 
@@ -1205,143 +1349,207 @@ function drawGalaxy(time) {
         i++
     ) {
 
+
         const p =
             particles[i];
 
+
         const localAngle =
+
             p.angle
+
             +
+
             rotation
+
             +
-            time * p.speed;
+
+            time
+            * p.speed;
+
 
         const armWave =
+
             Math.sin(
+
                 p.arm
                 +
-                p.radius * .018
+                p.radius
+                * .018
+
             ) * .55;
 
+
         const angle =
+
             localAngle
             +
             armWave;
 
+
         const r =
+
             p.radius
             *
             (
-                maxRadius / 330
+                maxRadius
+                / 330
             );
 
+
         const depth =
+
             .52
             +
             Math.sin(angle)
             * .48;
 
+
         const x =
+
             centerX
             +
             Math.cos(angle)
             * r;
 
+
         const y =
+
             centerY
             +
             Math.sin(angle)
             * r
             * .28
             +
-            (1-depth)*35;
+            (1 - depth)
+            * 35;
+
 
         const centerBoost =
+
             1 -
             Math.min(
-                r/maxRadius,
+                r / maxRadius,
                 1
             );
 
+
         const alpha =
+
             .18
             +
-            p.brightness*.70
+            p.brightness
+            * .70
             +
-            centerBoost*.20;
+            centerBoost
+            * .20;
+
 
         ctx.fillStyle =
+
             `rgba(
                 255,
-                ${185 +
-                Math.floor(
-                    centerBoost*55
+                ${185 + Math.floor(
+                    centerBoost * 55
                 )},
                 40,
                 ${alpha}
             )`;
 
+
         const size =
+
             p.size
             *
             (
                 .7
                 +
-                depth*.9
+                depth
+                * .9
             );
+
 
         ctx.beginPath();
 
+
         ctx.arc(
+
             x,
             y,
+
             size,
+
             0,
-            Math.PI*2
+            Math.PI * 2
+
         );
 
+
         ctx.fill();
+
     }
 
 
+    /*
+       Anillos de la galaxia
+    */
+
     ctx.strokeStyle =
-        "rgba(255,210,55,.25)";
+        "rgba(255,210,55,.22)";
 
     ctx.lineWidth = 2;
 
+
     ctx.beginPath();
 
+
     ctx.ellipse(
+
         centerX,
         centerY,
-        maxRadius*.92,
-        maxRadius*.25,
+
+        maxRadius * .92,
+        maxRadius * .25,
+
         0,
+
         0,
-        Math.PI*2
+        Math.PI * 2
+
     );
+
 
     ctx.stroke();
 
 
     ctx.strokeStyle =
-        "rgba(255,150,30,.18)";
+        "rgba(255,150,30,.15)";
+
 
     ctx.beginPath();
 
+
     ctx.ellipse(
+
         centerX,
         centerY,
-        maxRadius*.72,
-        maxRadius*.19,
+
+        maxRadius * .72,
+        maxRadius * .19,
+
         0,
+
         0,
-        Math.PI*2
+        Math.PI * 2
+
     );
+
 
     ctx.stroke();
 
 
     drawBlackHole();
+
 }
 
 
@@ -1351,59 +1559,83 @@ function drawGalaxy(time) {
 
 const stars = [];
 
+
+/*
+   PC:
+   140 estrellas
+
+   CELULAR:
+   55 estrellas
+*/
+
 const starCount =
-    width < 600
-        ? 110
-        : 170;
+    esMovil
+        ? 55
+        : 140;
 
 
 for (
-    let i=0;
-    i<starCount;
+    let i = 0;
+    i < starCount;
     i++
 ) {
 
     stars.push({
 
         x:
-            Math.random()*width,
+            Math.random()
+            * width,
 
         y:
-            Math.random()*height,
+            Math.random()
+            * height,
 
         size:
-            Math.random()*1.5+.3,
+            Math.random()
+            * 1.5
+            + .3,
 
         phase:
             Math.random()
-            *Math.PI*2
+            * Math.PI
+            * 2
+
     });
+
 }
 
 
 function drawStars(time) {
 
+
     for (
-        let i=0;
-        i<stars.length;
+        let i = 0;
+        i < stars.length;
         i++
     ) {
+
 
         const s =
             stars[i];
 
+
         const twinkle =
+
             .35
             +
             (
                 Math.sin(
-                    time*.002
+                    time * .002
                     +
                     s.phase
-                )+1
-            )*.25;
+                )
+                + 1
+            )
+            * .25;
+
 
         ctx.fillStyle =
+
             `rgba(
                 255,
                 255,
@@ -1411,18 +1643,27 @@ function drawStars(time) {
                 ${twinkle}
             )`;
 
+
         ctx.beginPath();
 
+
         ctx.arc(
+
             s.x,
             s.y,
+
             s.size,
+
             0,
-            Math.PI*2
+            Math.PI * 2
+
         );
 
+
         ctx.fill();
+
     }
+
 }
 
 
@@ -1449,84 +1690,98 @@ const fotos = [
 
 function actualizarFotos(time) {
 
+
     const radioBase =
+
         Math.min(
             width,
             height
-        ) * .34;
+        )
+        * .34;
 
 
     fotos.forEach(
-        (foto,index) => {
+
+        (foto, index) => {
+
 
             const angulo =
 
-                rotation*.75
+                rotation * .75
 
                 +
 
-                time*.00025
+                time * .00025
 
                 +
 
                 index
                 *
                 (
-                    Math.PI*2/3
+                    Math.PI * 2 / 3
                 );
 
 
             const profundidad =
+
                 (
                     Math.sin(
                         angulo
-                    ) + 1
-                ) / 2;
+                    )
+                    + 1
+                )
+                / 2;
 
 
             const radio =
+
                 radioBase
                 *
                 (
                     .82
                     +
-                    profundidad*.18
+                    profundidad
+                    * .18
                 );
 
 
             const x =
+
                 Math.cos(
                     angulo
                 )
-                *
-                radio;
+                * radio;
 
 
             const y =
+
                 Math.sin(
                     angulo
                 )
-                *
-                radio
-                *
-                .48;
+                * radio
+                * .48;
 
 
             const escala =
+
                 .72
                 +
-                profundidad*.48;
+                profundidad
+                * .48;
 
 
             const opacidad =
+
                 .55
                 +
-                profundidad*.45;
+                profundidad
+                * .45;
 
 
             const tamaño =
+
                 (
-                    width < 600
+                    esMovil
                         ? 90
                         : 125
                 )
@@ -1535,42 +1790,38 @@ function actualizarFotos(time) {
 
 
             foto.style.width =
-                tamaño+"px";
+                tamaño + "px";
 
             foto.style.height =
-                tamaño+"px";
+                tamaño + "px";
 
             foto.style.opacity =
                 opacidad;
 
 
-            /*
-             * Fotos delante
-             * o detrás.
-             */
-
             foto.style.zIndex =
+
                 10
                 +
                 Math.floor(
-                    profundidad*15
+                    profundidad * 15
                 );
 
 
             foto.style.transform =
 
-                `
-                translate(
-                    ${x - tamaño/2}px,
-                    ${y - tamaño/2}px
+                `translate(
+                    ${x - tamaño / 2}px,
+                    ${y - tamaño / 2}px
                 )
                 rotate(
-                    ${angulo*25}deg
-                )
-                `;
+                    ${angulo * 25}deg
+                )`;
 
         }
+
     );
+
 }
 
 
@@ -1578,18 +1829,60 @@ function actualizarFotos(time) {
    ANIMACIÓN PRINCIPAL
 ========================================= */
 
+
+/*
+   En PC:
+   hasta la frecuencia normal.
+
+   En celular:
+   máximo aproximado de 45 FPS.
+*/
+
+let ultimoFrame = 0;
+
+const intervaloMovil =
+    1000 / 45;
+
+
 function animate(time) {
 
-    drawStars(time);
+
+    if (
+
+        esMovil
+        &&
+        time - ultimoFrame
+        <
+        intervaloMovil
+
+    ) {
+
+        requestAnimationFrame(
+            animate
+        );
+
+        return;
+
+    }
+
+
+    ultimoFrame =
+        time;
+
 
     drawGalaxy(time);
 
+    drawStars(time);
+
     actualizarFotos(time);
+
 
     requestAnimationFrame(
         animate
     );
+
 }
+
 
 requestAnimationFrame(
     animate
@@ -1605,20 +1898,24 @@ const inicio =
         "inicio"
     );
 
+
 const mensaje =
     document.getElementById(
         "mensaje"
     );
+
 
 const ayuda =
     document.getElementById(
         "ayuda"
     );
 
+
 const musica =
     document.getElementById(
         "musica"
     );
+
 
 const floresCaidas =
     document.getElementById(
@@ -1626,82 +1923,120 @@ const floresCaidas =
     );
 
 
-let iniciada = false;
+let iniciada =
+    false;
 
+
+/* =========================================
+   FLOR QUE CAE
+========================================= */
 
 function crearFlorCaida() {
 
+
     if (!iniciada)
         return;
+
 
     const flor =
         document.createElement(
             "div"
         );
 
+
     flor.className =
         "flor-cayendo";
+
 
     flor.textContent =
         "🌻";
 
+
     flor.style.left =
-        Math.random()*100
+
+        Math.random()
+        * 100
         + "%";
 
+
     const tamaño =
+
         17
         +
-        Math.random()*23;
+        Math.random()
+        * 23;
+
 
     flor.style.fontSize =
-        tamaño+"px";
+        tamaño + "px";
+
 
     const duracion =
+
         5
         +
-        Math.random()*5;
+        Math.random()
+        * 5;
+
 
     flor.style.animationDuration =
-        duracion+"s";
+
+        duracion
+        + "s";
+
 
     floresCaidas.appendChild(
         flor
     );
 
+
     setTimeout(
+
         () => {
 
             flor.remove();
 
         },
-        (duracion+2)*1000
+
+        (duracion + 2)
+        * 1000
+
     );
+
 }
 
 
+/* =========================================
+   FLOR LATERAL
+========================================= */
+
 function crearFlorLateral() {
+
 
     if (!iniciada)
         return;
+
 
     const flor =
         document.createElement(
             "div"
         );
+
 
     flor.className =
         "flor-lateral";
 
 
     const izquierda =
-        Math.random()>.5;
+        Math.random() > .5;
 
 
     flor.classList.add(
+
         izquierda
             ? "flor-izquierda"
             : "flor-derecha"
+
     );
 
 
@@ -1710,49 +2045,57 @@ function crearFlorLateral() {
 
 
     flor.style.top =
+
         (
             15
             +
-            Math.random()*70
+            Math.random() * 70
         )
-        +
-        "vh";
+        + "vh";
 
 
     const movimiento =
+
         90
         +
-        Math.random()*120;
+        Math.random() * 120;
 
 
     flor.style.setProperty(
+
         "--movimiento",
+
         (
             izquierda
                 ? movimiento
                 : -movimiento
-        )+"px"
+        )
+        + "px"
+
     );
 
 
     flor.style.fontSize =
+
         (
             18
             +
-            Math.random()*20
+            Math.random() * 20
         )
-        +
-        "px";
+        + "px";
 
 
     const duracion =
+
         5
         +
-        Math.random()*4;
+        Math.random() * 4;
 
 
     flor.style.animationDuration =
-        duracion+"s";
+
+        duracion
+        + "s";
 
 
     floresCaidas.appendChild(
@@ -1761,13 +2104,18 @@ function crearFlorLateral() {
 
 
     setTimeout(
+
         () => {
 
             flor.remove();
 
         },
-        (duracion+1)*1000
+
+        (duracion + 1)
+        * 1000
+
     );
+
 }
 
 
@@ -1777,8 +2125,10 @@ function crearFlorLateral() {
 
 function comenzar() {
 
+
     if (iniciada)
         return;
+
 
     iniciada = true;
 
@@ -1799,6 +2149,7 @@ function comenzar() {
 
 
     setTimeout(
+
         () => {
 
             mensaje.classList.add(
@@ -1806,23 +2157,44 @@ function comenzar() {
             );
 
         },
-        2500
+
+        2200
+
     );
 
 
+    /*
+       PC:
+       más flores.
+
+       CELULAR:
+       menos flores para evitar lag.
+    */
+
     setInterval(
+
         crearFlorCaida,
-        650
+
+        esMovil
+            ? 950
+            : 650
+
     );
 
 
     setInterval(
+
         crearFlorLateral,
-        1400
+
+        esMovil
+            ? 2200
+            : 1400
+
     );
 
 
     setTimeout(
+
         () => {
 
             ayuda.classList.add(
@@ -1830,31 +2202,49 @@ function comenzar() {
             );
 
         },
+
         9000
+
     );
+
 }
 
 
+/* =========================================
+   EVENTOS
+========================================= */
+
 inicio.addEventListener(
+
     "pointerdown",
+
     comenzar
+
 );
 
 
 document.addEventListener(
+
     "keydown",
+
     e => {
 
         if (
+
             e.code === "Space"
             ||
             e.code === "Enter"
+
         ) {
 
             comenzar();
+
         }
+
     }
+
 );
+
 
 </script>
 
