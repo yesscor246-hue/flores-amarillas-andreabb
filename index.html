@@ -2255,37 +2255,21 @@ document.addEventListener(
     }
 
 );
+const inicio = document.getElementById("inicio");
+const musica = document.getElementById("musica");
 
+inicio.addEventListener("pointerdown", function () {
+    musica.volume = 1.0;
+
+    musica.play().then(function () {
+        console.log("🎵 Música iniciada");
+    }).catch(function (error) {
+        console.log("Error de audio:", error);
+    });
+});
 
 </script>
 
 </body>
 
 </html>
-
-const inicio = document.getElementById("inicio");
-const musica = document.getElementById("musica");
-
-function iniciarExperiencia() {
-
-    musica.volume = 0.75;
-
-    musica.play()
-        .then(() => {
-            console.log("🎵 Música iniciada");
-        })
-        .catch(error => {
-            console.log("No se pudo iniciar la música:", error);
-        });
-
-    inicio.classList.add("ocultar");
-
-    document.getElementById("mensaje")
-        .classList.add("mostrar");
-}
-
-inicio.addEventListener(
-    "pointerdown",
-    iniciarExperiencia,
-    { once: true }
-);
