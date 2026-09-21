@@ -191,7 +191,7 @@ body {
     position: fixed;
 
     left: 50%;
-    top: 50%;
+    top: 43%;
 
     width: 90%;
 
@@ -207,13 +207,13 @@ body {
 
     transform:
         translate(-50%,-50%)
-        scale(.72);
+        scale(.88);
 
     transition:
 
-        opacity 2.5s ease,
+        opacity .9s ease,
 
-        transform 2.5s ease;
+        transform .9s ease;
 
 }
 
@@ -713,10 +713,21 @@ body {
 
     }
 
-    #mensaje h2 {
+    #mensaje {
+        top: 43%;
+    }
 
+    #mensaje h2 {
         font-size: 29px;
 
+        text-shadow:
+            0 0 4px rgba(255,244,163,.65),
+            0 0 10px rgba(255,208,0,.45);
+    }
+
+    #mensaje p {
+        text-shadow:
+            0 0 4px rgba(255,255,255,.7);
     }
 
     #mensaje p {
@@ -1047,10 +1058,10 @@ for (
             + .45,
 
         speed:
-            .0007
+            .00025
             +
             Math.random()
-            * .0015,
+            * .0006,
 
         arm:
             Math.random()
@@ -1327,7 +1338,7 @@ function drawGalaxy(time) {
     if (!dragging) {
 
         rotation +=
-            .0007
+            .00025
             +
             velocity;
 
@@ -1707,11 +1718,11 @@ function actualizarFotos(time) {
 
             const angulo =
 
-                rotation * .75
+                rotation * .45
 
                 +
 
-                time * .00025
+                time * .00012
 
                 +
 
@@ -2187,7 +2198,7 @@ function comenzar() {
         crearFlorLateral,
 
         esMovil
-            ? 2200
+            ? 2600
             : 1400
 
     );
