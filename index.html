@@ -1,981 +1,363 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width,
-               initial-scale=1.0,
-               user-scalable=no">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Para mi Andrea 🌻</title>
 
 <style>
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html,
-body {
-
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-
-    background: #000;
-
-    touch-action: none;
-
-    user-select: none;
-    -webkit-user-select: none;
-
-}
-
-body {
-
-    position: relative;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-}
-
-
-/* =========================================
-   CANVAS
-========================================= */
-
-#canvas {
-
-    position: fixed;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    background: #000;
-
-    touch-action: none;
-
-}
-
-
-/* =========================================
-   PANTALLA INICIAL
-========================================= */
-
-#inicio {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 50;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle,
-            #171020 0%,
-            #08050b 48%,
-            #000 100%
-        );
-
-    transition:
-        opacity 1.5s ease;
-
-}
-
-#inicio.ocultar {
-
-    opacity: 0;
-
-    pointer-events: none;
-
-}
-
-.flor-inicio {
-
-    font-size: 75px;
-
-    margin-bottom: 25px;
-
-    animation:
-        latido 1.8s
-        ease-in-out
-        infinite;
-
-    filter:
-        drop-shadow(
-            0 0 15px
-            rgba(255,210,0,.95)
-        );
-
-}
-
-#inicio h1 {
-
-    width: 90%;
-
-    color: #ffd83d;
-
-    font-size: 29px;
-
-    line-height: 1.35;
-
-    font-family:
-        "Palatino Linotype",
-        "Book Antiqua",
-        Palatino,
-        Georgia,
-        serif;
-
-    font-weight: normal;
-
-    text-shadow:
-
-        0 0 8px #fff4a3,
-
-        0 0 18px #ffd000,
-
-        0 0 35px #ff9d00;
-
-}
-
-#inicio p {
-
-    margin-top: 28px;
-
-    color: white;
-
-    font-size: 18px;
-
-    letter-spacing: 1px;
-
-    text-shadow:
-
-        0 0 8px white,
-
-        0 0 18px
-        rgba(255,215,100,.8);
-
-}
-
-
-/* =========================================
-   MENSAJE
-========================================= */
-
-#mensaje {
-
-    position: fixed;
-
-    left: 50%;
-    top: 50%;
-
-    width: 90%;
-
-    max-width: 680px;
-
-    z-index: 25;
-
-    text-align: center;
-
-    pointer-events: none;
-
-    opacity: 0;
-
-    transform:
-        translate(-50%,-50%)
-        scale(.72);
-
-    transition:
-
-        opacity 2.5s ease,
-
-        transform 2.5s ease;
-
-}
-
-#mensaje.mostrar {
-
-    opacity: 1;
-
-    transform:
-        translate(-50%,-50%)
-        scale(1);
-
-}
-
-#mensaje h2 {
-
-    color: #ffe45c;
-
-    font-size: 37px;
-
-    line-height: 1.3;
-
-    font-family:
-        "Palatino Linotype",
-        "Book Antiqua",
-        Palatino,
-        Georgia,
-        serif;
-
-    font-weight: normal;
-
-    letter-spacing: 1px;
-
-    text-shadow:
-
-        0 0 6px #fff4a3,
-
-        0 0 15px #ffd000,
-
-        0 0 28px #ffae00,
-
-        0 0 45px #ff7900;
-
-    animation:
-        brilloTitulo 2.5s
-        ease-in-out
-        infinite alternate;
-
-}
-
-#mensaje p {
-
-    margin-top: 20px;
-
-    color: white;
-
-    font-size: 25px;
-
-    line-height: 1.7;
-
-    font-family:
-        "Palatino Linotype",
-        "Book Antiqua",
-        Palatino,
-        Georgia,
-        serif;
-
-    letter-spacing: 1px;
-
-    text-shadow:
-
-        0 0 5px white,
-
-        0 0 12px white,
-
-        0 0 22px
-        rgba(255,220,120,.95);
-
-    animation:
-        brilloTexto 2.5s
-        ease-in-out
-        infinite alternate;
-
-}
-
-.corazon {
-
-    display: block;
-
-    margin-top: 17px;
-
-    font-size: 62px;
-
-    animation:
-        latido 1.1s
-        infinite;
-
-    filter:
-        drop-shadow(
-            0 0 15px red
-        );
-
-}
-
-
-/* =========================================
-   FOTOS
-========================================= */
-
-#fotos-orbita {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 18;
-
-    pointer-events: none;
-
-}
-
-.foto-orbita {
-
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: 125px;
-    height: 125px;
-
-    object-fit: cover;
-
-    border-radius: 50%;
-
-    border:
-        3px solid
-        rgba(255,220,80,.95);
-
-    box-shadow:
-
-        0 0 8px white,
-
-        0 0 18px #ffd000,
-
-        0 0 35px
-        rgba(255,160,20,.8);
-
-    will-change: transform;
-
-}
-
-
-/* =========================================
-   FLORES
-========================================= */
-
-#flores-caidas {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 20;
-
-    pointer-events: none;
-
-    overflow: hidden;
-
-}
-
-.flor-cayendo {
-
-    position: absolute;
-
-    top: -80px;
-
-    opacity: 0;
-
-    filter:
-        drop-shadow(
-            0 0 7px
-            rgba(255,215,0,.9)
-        );
-
-    animation:
-        caerFlor
-        linear
-        forwards;
-
-    will-change:
-        transform,
-        opacity;
-
-}
-
-@keyframes caerFlor {
-
-    0% {
-
-        transform:
-            translate3d(
-                0,
-                -80px,
-                0
-            )
-            rotate(0deg);
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+        font-family: Georgia, "Times New Roman", serif;
+        touch-action: none;
+    }
+
+    body {
+        position: relative;
+    }
+
+    canvas {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        background: #000;
+    }
+
+    /* =========================
+       PANTALLA DE INICIO
+    ========================= */
+
+    #intro {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background:
+            radial-gradient(circle at center,
+                rgba(45, 30, 0, 0.25),
+                rgba(0, 0, 0, 0.98) 70%);
+        transition: opacity 0.8s ease, visibility 0.8s ease;
+        cursor: pointer;
+    }
+
+    #intro.oculto {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    #intro h1 {
+        color: #ffe66d;
+        font-size: clamp(28px, 7vw, 52px);
+        line-height: 1.2;
+        margin-bottom: 25px;
+        text-shadow:
+            0 0 8px rgba(255, 220, 80, 0.8),
+            0 0 20px rgba(255, 180, 0, 0.35);
+    }
+
+    #intro p {
+        color: white;
+        font-size: clamp(17px, 4.5vw, 25px);
+        opacity: 0.9;
+        animation: respirar 2s ease-in-out infinite;
+    }
+
+    @keyframes respirar {
+        0%, 100% {
+            opacity: 0.55;
+        }
+
+        50% {
+            opacity: 1;
+        }
+    }
+
+    /* =========================
+       MENSAJE PRINCIPAL
+    ========================= */
+
+    #mensaje {
+        position: fixed;
+        left: 50%;
+        top: 11%;
+        transform: translate(-50%, -15px);
+        width: 92%;
+        max-width: 850px;
+        text-align: center;
+        z-index: 20;
 
         opacity: 0;
+        visibility: hidden;
 
+        color: white;
+
+        transition:
+            opacity 1.2s ease,
+            transform 1.2s ease,
+            visibility 1.2s ease;
     }
 
-    10% {
-
-        opacity: .95;
-
-    }
-
-    50% {
-
-        transform:
-            translate3d(
-                35px,
-                50vh,
-                0
-            )
-            rotate(180deg);
-
+    #mensaje.mostrar {
         opacity: 1;
-
-    }
-
-    100% {
-
-        transform:
-            translate3d(
-                -45px,
-                115vh,
-                0
-            )
-            rotate(360deg);
-
-        opacity: 0;
-
-    }
-
-}
-
-
-/* =========================================
-   FLORES LATERALES
-========================================= */
-
-.flor-lateral {
-
-    position: absolute;
-
-    opacity: 0;
-
-    filter:
-        drop-shadow(
-            0 0 8px
-            rgba(255,215,0,.9)
-        );
-
-    animation:
-        entrarLateral
-        ease-in-out
-        forwards;
-
-    will-change:
-        transform,
-        opacity;
-
-}
-
-.flor-izquierda {
-
-    left: -70px;
-
-}
-
-.flor-derecha {
-
-    right: -70px;
-
-}
-
-@keyframes entrarLateral {
-
-    0% {
-
-        opacity: 0;
-
-        transform:
-            translateX(0)
-            rotate(0deg)
-            scale(.6);
-
-    }
-
-    20% {
-
-        opacity: .9;
-
-    }
-
-    50% {
-
-        opacity: 1;
-
-        transform:
-            translateX(
-                var(--movimiento)
-            )
-            rotate(180deg)
-            scale(1);
-
-    }
-
-    80% {
-
-        opacity: .85;
-
-    }
-
-    100% {
-
-        opacity: 0;
-
-        transform:
-            translateX(
-                calc(
-                    var(--movimiento) * .7
-                )
-            )
-            rotate(360deg)
-            scale(.7);
-
-    }
-
-}
-
-
-/* =========================================
-   AYUDA
-========================================= */
-
-#ayuda {
-
-    position: fixed;
-
-    left: 50%;
-
-    bottom: 32px;
-
-    transform:
-        translateX(-50%);
-
-    z-index: 40;
-
-    color:
-        rgba(
-            255,
-            255,
-            255,
-            .78
-        );
-
-    font-size: 14px;
-
-    text-align: center;
-
-    pointer-events: none;
-
-    text-shadow:
-
-        0 0 8px white,
-
-        0 0 15px
-        rgba(255,210,80,.8);
-
-    transition:
-        opacity 1s ease;
-
-}
-
-#ayuda.ocultar {
-
-    opacity: 0;
-
-}
-
-
-/* =========================================
-   ANIMACIONES
-========================================= */
-
-@keyframes latido {
-
-    0% {
-
-        transform:
-            scale(1);
-
-    }
-
-    50% {
-
-        transform:
-            scale(1.12);
-
-    }
-
-    100% {
-
-        transform:
-            scale(1);
-
-    }
-
-}
-
-@keyframes brilloTitulo {
-
-    from {
-
-        transform:
-            scale(1);
-
-        text-shadow:
-
-            0 0 5px #fff4a3,
-
-            0 0 14px #ffd000,
-
-            0 0 25px #ffae00;
-
-    }
-
-    to {
-
-        transform:
-            scale(1.015);
-
-        text-shadow:
-
-            0 0 10px white,
-
-            0 0 20px #ffd000,
-
-            0 0 38px #ffae00;
-
-    }
-
-}
-
-@keyframes brilloTexto {
-
-    from {
-
-        text-shadow:
-
-            0 0 4px white,
-
-            0 0 10px white,
-
-            0 0 18px
-            rgba(255,220,120,.7);
-
-    }
-
-    to {
-
-        text-shadow:
-
-            0 0 8px white,
-
-            0 0 18px white,
-
-            0 0 32px
-            rgba(255,220,120,1);
-
-    }
-
-}
-
-
-/* =========================================
-   MODO CELULAR
-========================================= */
-
-@media (max-width:600px) {
-
-    #inicio h1 {
-
-        font-size: 25px;
-
+        visibility: visible;
+        transform: translate(-50%, 0);
     }
 
     #mensaje h2 {
+        font-size: clamp(27px, 6vw, 52px);
+        line-height: 1.2;
+        color: #ffe86b;
+        font-weight: bold;
 
-        font-size: 29px;
-
+        text-shadow:
+            0 0 5px rgba(255, 230, 100, 0.8),
+            0 0 14px rgba(255, 190, 0, 0.35);
     }
 
-    #mensaje p {
-
-        font-size: 20px;
-
+    #mensaje .subtitulo {
+        margin-top: 13px;
+        font-size: clamp(19px, 4vw, 31px);
+        color: #fff;
+        text-shadow:
+            0 0 5px rgba(255, 255, 255, 0.5);
     }
+
+    #mensaje .amor {
+        margin-top: 8px;
+        font-size: clamp(21px, 4.5vw, 34px);
+        color: #ffe66d;
+        font-weight: bold;
+
+        text-shadow:
+            0 0 5px rgba(255, 220, 80, 0.7);
+    }
+
+    /* =========================
+       FOTOS
+    ========================= */
 
     .foto-orbita {
+        position: fixed;
+        left: 50%;
+        top: 50%;
 
-        width: 90px;
-        height: 90px;
+        width: 110px;
+        height: 110px;
+
+        object-fit: cover;
+        border-radius: 50%;
+
+        border: 3px solid rgba(255, 225, 70, 0.95);
 
         box-shadow:
+            0 0 8px rgba(255, 220, 50, 0.8),
+            0 0 18px rgba(255, 190, 0, 0.3);
 
-            0 0 5px white,
+        transform: translate(-50%, -50%);
 
-            0 0 10px #ffd000;
+        z-index: 10;
 
+        will-change: transform, opacity;
+        backface-visibility: hidden;
     }
 
-    .corazon {
-
-        font-size: 52px;
-
-    }
+    /* =========================
+       CONTROL
+    ========================= */
 
     #ayuda {
+        position: fixed;
+        bottom: 18px;
+        left: 50%;
+        transform: translateX(-50%);
 
-        font-size: 13px;
+        z-index: 15;
 
-        bottom: 22px;
+        color: rgba(255, 255, 255, 0.6);
 
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+
+        pointer-events: none;
+
+        opacity: 0;
+        transition: opacity 1s ease;
     }
 
-    .flor-cayendo,
-    .flor-lateral {
-
-        filter: none;
-
+    #ayuda.mostrar {
+        opacity: 1;
     }
 
-}
+    /* =========================
+       OPTIMIZACIÓN CELULAR
+    ========================= */
 
+    @media (max-width: 600px) {
 
-/* =========================================
-   MODO DE BAJO RENDIMIENTO
-========================================= */
+        #mensaje {
+            top: 10%;
+            width: 94%;
+        }
 
-@media (prefers-reduced-motion: reduce) {
+        /*
+         En celular usamos sombras mucho más
+         pequeñas para evitar tirones cuando
+         aparece el mensaje.
+        */
 
-    .flor-cayendo,
-    .flor-lateral,
-    .corazon,
-    .flor-inicio,
-    #mensaje h2,
-    #mensaje p {
+        #mensaje h2 {
+            text-shadow:
+                0 0 4px rgba(255, 230, 100, 0.7);
+        }
 
-        animation-duration:
-            3s;
+        #mensaje .subtitulo {
+            text-shadow: none;
+        }
 
+        #mensaje .amor {
+            text-shadow:
+                0 0 4px rgba(255, 220, 80, 0.6);
+        }
+
+        .foto-orbita {
+            width: 86px;
+            height: 86px;
+
+            border-width: 2px;
+
+            box-shadow:
+                0 0 6px rgba(255, 220, 50, 0.65);
+        }
+
+        #ayuda {
+            display: none;
+        }
     }
 
-}
+    /* =========================
+       RESPETO A REDUCED MOTION
+    ========================= */
 
+    @media (prefers-reduced-motion: reduce) {
+
+        #intro p {
+            animation: none;
+        }
+
+        #mensaje,
+        #intro {
+            transition: opacity 0.3s ease;
+        }
+    }
 </style>
-
 </head>
-
 
 <body>
 
-
 <canvas id="canvas"></canvas>
 
+<!-- =========================
+     INTRO
+========================= -->
 
-<!-- =====================================
-     INICIO
-===================================== -->
-
-<div id="inicio">
-
-    <div class="flor-inicio">
-        🌻
-    </div>
-
-    <h1>
-        Feliz día de las flores amarillas 🌻
-    </h1>
-
-    <p>
-        Toca para iniciar ✨
-    </p>
-
+<div id="intro">
+    <h1>Feliz día de las flores amarillas 🌻</h1>
+    <p>Toca para iniciar ✨</p>
 </div>
 
-
-<!-- =====================================
-     FOTOS
-===================================== -->
-
-<div id="fotos-orbita">
-
-    <img
-        src="fotos1.jpeg"
-        class="foto-orbita"
-        id="foto1">
-
-    <img
-        src="foto2.jpeg"
-        class="foto-orbita"
-        id="foto2">
-
-    <img
-        src="foto3.jpeg"
-        class="foto-orbita"
-        id="foto3">
-
-</div>
-
-
-<!-- =====================================
-     FLORES
-===================================== -->
-
-<div id="flores-caidas"></div>
-
-
-<!-- =====================================
+<!-- =========================
      MENSAJE
-===================================== -->
+========================= -->
 
 <div id="mensaje">
 
     <h2>
-        Feliz día de las flores amarillas,
-        mi Andrea 🌻
+        Feliz día de las flores amarillas, mi Andrea 🌻
     </h2>
 
-    <p>
-
+    <div class="subtitulo">
         Para ti, mi amor.
+    </div>
 
-        <br>
-
+    <div class="amor">
         Te amo, mi chinita ❤️
-
-    </p>
-
-    <span class="corazon">
-        ❤️
-    </span>
+    </div>
 
 </div>
 
+<!-- =========================
+     FOTOS
+========================= -->
+
+<img src="fotos1.jpeg" class="foto-orbita" id="foto1" alt="">
+<img src="foto2.jpeg" class="foto-orbita" id="foto2" alt="">
+<img src="foto3.jpeg" class="foto-orbita" id="foto3" alt="">
 
 <div id="ayuda">
-
-    👆 Arrastra para girar la galaxia
-
+    Arrastra para mover la galaxia ✨
 </div>
 
-
-<!-- =====================================
-     MÚSICA
-===================================== -->
-
-<audio
-    id="musica"
-    loop
-    preload="auto">
-
-    <source
-        src="musica.mp3"
-        type="audio/mpeg">
-
-</audio>
-
+<audio id="musica" src="musica.mp3" preload="auto" loop></audio>
 
 <script>
 
+/* =========================================================
+   CONFIGURACIÓN GENERAL
+========================================================= */
 
-/* =========================================
-   CONFIGURACIÓN
-========================================= */
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d", {
+    alpha: false
+});
 
-const esMovil =
-    window.matchMedia(
-        "(max-width: 600px)"
-    ).matches;
+const esMovil = window.matchMedia("(max-width: 600px)").matches;
+
+let ancho = window.innerWidth;
+let alto = window.innerHeight;
+
+let dpr = Math.min(
+    window.devicePixelRatio || 1,
+    esMovil ? 1 : 1.25
+);
+
+let centroX = ancho / 2;
+let centroY = alto / 2;
 
 
-/* =========================================
+/* =========================================================
    CANVAS
-========================================= */
+========================================================= */
 
-const canvas =
-    document.getElementById(
-        "canvas"
-    );
+function ajustarCanvas() {
 
-const ctx =
-    canvas.getContext(
-        "2d",
-        {
-            alpha: false
-        }
-    );
+    ancho = window.innerWidth;
+    alto = window.innerHeight;
 
+    centroX = ancho / 2;
+    centroY = alto / 2;
 
-let width;
-let height;
+    canvas.width = Math.floor(ancho * dpr);
+    canvas.height = Math.floor(alto * dpr);
 
-let centerX;
-let centerY;
-
-
-let dpr =
-    Math.min(
-        window.devicePixelRatio || 1,
-        esMovil ? 1 : 1.25
-    );
-
-
-function resize() {
-
-    width =
-        window.innerWidth;
-
-    height =
-        window.innerHeight;
-
-    centerX =
-        width / 2;
-
-    centerY =
-        height / 2;
-
-
-    dpr =
-        Math.min(
-            window.devicePixelRatio || 1,
-            esMovil ? 1 : 1.25
-        );
-
-
-    canvas.width =
-        width * dpr;
-
-    canvas.height =
-        height * dpr;
-
-
-    canvas.style.width =
-        width + "px";
-
-    canvas.style.height =
-        height + "px";
-
+    canvas.style.width = ancho + "px";
+    canvas.style.height = alto + "px";
 
     ctx.setTransform(
         dpr,
@@ -985,1269 +367,926 @@ function resize() {
         0,
         0
     );
-
 }
 
+ajustarCanvas();
 
-window.addEventListener(
-    "resize",
-    resize
-);
+window.addEventListener("resize", ajustarCanvas);
 
 
-resize();
+/* =========================================================
+   ESTRELLAS
+========================================================= */
 
+const estrellas = [];
 
-/* =========================================
-   PARTÍCULAS
-========================================= */
+const cantidadEstrellas = esMovil ? 55 : 140;
 
-const particles = [];
+for (let i = 0; i < cantidadEstrellas; i++) {
 
-
-/*
-   PC:
-   650 partículas
-
-   CELULAR:
-   260 partículas
-*/
-
-const particleCount =
-    esMovil
-        ? 260
-        : 650;
-
-
-for (
-    let i = 0;
-    i < particleCount;
-    i++
-) {
-
-    particles.push({
-
-        angle:
-            Math.random()
-            * Math.PI
-            * 2,
-
-        radius:
-            45
-            +
-            Math.pow(
-                Math.random(),
-                .55
-            )
-            * 330,
-
-        size:
-            Math.random()
-            * 2
-            + .45,
-
-        speed:
-            .0007
-            +
-            Math.random()
-            * .0015,
-
-        arm:
-            Math.random()
-            * 4,
-
-        brightness:
-            .35
-            +
-            Math.random()
-            * .65
-
+    estrellas.push({
+        x: Math.random() * ancho,
+        y: Math.random() * alto,
+        radio: Math.random() * 1.4 + 0.3,
+        brillo: Math.random() * Math.PI * 2,
+        velocidad: Math.random() * 0.015 + 0.005
     });
-
 }
 
+function dibujarEstrellas() {
 
-/* =========================================
-   ROTACIÓN
-========================================= */
+    for (let i = 0; i < estrellas.length; i++) {
 
-let rotation = 0;
+        const estrella = estrellas[i];
 
-let velocity = 0;
-
-let dragging = false;
-
-let lastX = 0;
-
-let lastY = 0;
-
-let lastTime = 0;
-
-
-canvas.addEventListener(
-    "pointerdown",
-    e => {
-
-        dragging = true;
-
-        lastX =
-            e.clientX;
-
-        lastY =
-            e.clientY;
-
-        lastTime =
-            performance.now();
-
-        canvas.setPointerCapture(
-            e.pointerId
-        );
-
-    }
-);
-
-
-canvas.addEventListener(
-    "pointermove",
-    e => {
-
-        if (!dragging)
-            return;
-
-
-        const now =
-            performance.now();
-
-
-        const dx =
-            e.clientX - lastX;
-
-        const dy =
-            e.clientY - lastY;
-
-
-        rotation +=
-            dx * .008;
-
-        rotation +=
-            dy * .002;
-
-
-        const elapsed =
-            Math.max(
-                1,
-                now - lastTime
-            );
-
-
-        velocity =
-            dx /
-            elapsed *
-            .025;
-
-
-        lastX =
-            e.clientX;
-
-        lastY =
-            e.clientY;
-
-        lastTime =
-            now;
-
-    }
-);
-
-
-canvas.addEventListener(
-    "pointerup",
-    () => {
-
-        dragging = false;
-
-    }
-);
-
-
-canvas.addEventListener(
-    "pointercancel",
-    () => {
-
-        dragging = false;
-
-    }
-);
-
-
-/* =========================================
-   AGUJERO NEGRO
-========================================= */
-
-function drawBlackHole() {
-
-
-    const halo =
-        ctx.createRadialGradient(
-
-            centerX,
-            centerY,
-            35,
-
-            centerX,
-            centerY,
-            160
-
-        );
-
-
-    halo.addColorStop(
-        0,
-        "rgba(0,0,0,1)"
-    );
-
-    halo.addColorStop(
-        .35,
-        "rgba(255,190,30,.15)"
-    );
-
-    halo.addColorStop(
-        .60,
-        "rgba(255,140,10,.08)"
-    );
-
-    halo.addColorStop(
-        1,
-        "rgba(0,0,0,0)"
-    );
-
-
-    ctx.fillStyle =
-        halo;
-
-
-    ctx.beginPath();
-
-    ctx.arc(
-        centerX,
-        centerY,
-        160,
-        0,
-        Math.PI * 2
-    );
-
-    ctx.fill();
-
-
-    ctx.strokeStyle =
-        "rgba(255,215,80,.85)";
-
-    ctx.lineWidth =
-        4;
-
-
-    ctx.shadowBlur =
-        esMovil
-            ? 8
-            : 18;
-
-    ctx.shadowColor =
-        "#ffc928";
-
-
-    ctx.beginPath();
-
-
-    ctx.ellipse(
-
-        centerX,
-        centerY,
-
-        105,
-        32,
-
-        0,
-
-        0,
-        Math.PI * 2
-
-    );
-
-
-    ctx.stroke();
-
-
-    ctx.shadowBlur =
-        0;
-
-
-    ctx.fillStyle =
-        "#000";
-
-
-    ctx.beginPath();
-
-
-    ctx.arc(
-
-        centerX,
-        centerY,
-
-        78,
-
-        0,
-        Math.PI * 2
-
-    );
-
-
-    ctx.fill();
-
-}
-
-
-/* =========================================
-   GALAXIA
-========================================= */
-
-function drawGalaxy(time) {
-
-
-    ctx.fillStyle =
-        "#000";
-
-
-    ctx.fillRect(
-        0,
-        0,
-        width,
-        height
-    );
-
-
-    if (!dragging) {
-
-        rotation +=
-            .0007
-            +
-            velocity;
-
-        velocity *= .96;
-
-    }
-
-
-    const maxRadius =
-        Math.min(
-            width,
-            height
-        ) * .43;
-
-
-    for (
-        let i = 0;
-        i < particles.length;
-        i++
-    ) {
-
-
-        const p =
-            particles[i];
-
-
-        const localAngle =
-
-            p.angle
-
-            +
-
-            rotation
-
-            +
-
-            time
-            * p.speed;
-
-
-        const armWave =
-
-            Math.sin(
-
-                p.arm
-                +
-                p.radius
-                * .018
-
-            ) * .55;
-
-
-        const angle =
-
-            localAngle
-            +
-            armWave;
-
-
-        const r =
-
-            p.radius
-            *
-            (
-                maxRadius
-                / 330
-            );
-
-
-        const depth =
-
-            .52
-            +
-            Math.sin(angle)
-            * .48;
-
-
-        const x =
-
-            centerX
-            +
-            Math.cos(angle)
-            * r;
-
-
-        const y =
-
-            centerY
-            +
-            Math.sin(angle)
-            * r
-            * .28
-            +
-            (1 - depth)
-            * 35;
-
-
-        const centerBoost =
-
-            1 -
-            Math.min(
-                r / maxRadius,
-                1
-            );
-
+        estrella.brillo += estrella.velocidad;
 
         const alpha =
+            0.35 +
+            Math.sin(estrella.brillo) * 0.3;
 
-            .18
-            +
-            p.brightness
-            * .70
-            +
-            centerBoost
-            * .20;
+        ctx.globalAlpha = alpha;
+
+        ctx.fillStyle = "#ffffff";
+
+        ctx.beginPath();
+
+        ctx.arc(
+            estrella.x,
+            estrella.y,
+            estrella.radio,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+    }
+
+    ctx.globalAlpha = 1;
+}
 
 
-        ctx.fillStyle =
+/* =========================================================
+   PARTÍCULAS DE LA GALAXIA
+========================================================= */
 
-            `rgba(
-                255,
-                ${185 + Math.floor(
-                    centerBoost * 55
-                )},
-                40,
-                ${alpha}
-            )`;
+const particulas = [];
+
+const cantidadParticulas = esMovil ? 260 : 650;
+
+for (let i = 0; i < cantidadParticulas; i++) {
+
+    const angulo =
+        Math.random() * Math.PI * 2;
+
+    const distancia =
+        35 +
+        Math.pow(Math.random(), 0.65) *
+        Math.min(ancho, alto) *
+        0.55;
+
+    particulas.push({
+
+        angulo: angulo,
+
+        distancia: distancia,
+
+        velocidad:
+            0.0004 +
+            Math.random() * 0.001,
+
+        tamaño:
+            Math.random() * 1.5 + 0.3,
+
+        alpha:
+            Math.random() * 0.65 + 0.2,
+
+        tono:
+            Math.random()
+    });
+}
 
 
-        const size =
+/* =========================================================
+   MOVIMIENTO DE GALAXIA
+========================================================= */
 
-            p.size
-            *
-            (
-                .7
-                +
-                depth
-                * .9
-            );
+let desplazamientoX = 0;
+let desplazamientoY = 0;
+
+let objetivoX = 0;
+let objetivoY = 0;
+
+let arrastrando = false;
+
+let ultimoX = 0;
+let ultimoY = 0;
+
+
+/* =========================================================
+   EVENTOS DE ARRASTRE
+========================================================= */
+
+function comenzarArrastre(x, y) {
+
+    arrastrando = true;
+
+    ultimoX = x;
+    ultimoY = y;
+}
+
+function moverArrastre(x, y) {
+
+    if (!arrastrando) {
+        return;
+    }
+
+    const dx = x - ultimoX;
+    const dy = y - ultimoY;
+
+    objetivoX += dx * 0.8;
+    objetivoY += dy * 0.8;
+
+    ultimoX = x;
+    ultimoY = y;
+}
+
+function terminarArrastre() {
+
+    arrastrando = false;
+}
+
+
+canvas.addEventListener("mousedown", function(e) {
+
+    comenzarArrastre(
+        e.clientX,
+        e.clientY
+    );
+
+});
+
+canvas.addEventListener("mousemove", function(e) {
+
+    moverArrastre(
+        e.clientX,
+        e.clientY
+    );
+
+});
+
+canvas.addEventListener("mouseup", terminarArrastre);
+canvas.addEventListener("mouseleave", terminarArrastre);
+
+
+canvas.addEventListener(
+    "touchstart",
+    function(e) {
+
+        const touch = e.touches[0];
+
+        comenzarArrastre(
+            touch.clientX,
+            touch.clientY
+        );
+
+    },
+    { passive: true }
+);
+
+
+canvas.addEventListener(
+    "touchmove",
+    function(e) {
+
+        const touch = e.touches[0];
+
+        moverArrastre(
+            touch.clientX,
+            touch.clientY
+        );
+
+    },
+    { passive: true }
+);
+
+
+canvas.addEventListener(
+    "touchend",
+    terminarArrastre,
+    { passive: true }
+);
+
+
+/* =========================================================
+   GALAXIA
+========================================================= */
+
+function dibujarGalaxia(tiempo) {
+
+    desplazamientoX +=
+        (objetivoX - desplazamientoX) * 0.08;
+
+    desplazamientoY +=
+        (objetivoY - desplazamientoY) * 0.08;
+
+
+    const cx =
+        centroX + desplazamientoX;
+
+    const cy =
+        centroY + desplazamientoY;
+
+
+    /*
+       PARTICULAS
+    */
+
+    for (let i = 0; i < particulas.length; i++) {
+
+        const p = particulas[i];
+
+        p.angulo += p.velocidad;
+
+        const angulo =
+            p.angulo +
+            p.distancia * 0.00025;
+
+        const deformacion =
+            1 +
+            Math.sin(
+                p.distancia * 0.035
+            ) * 0.04;
+
+        const x =
+            cx +
+            Math.cos(angulo) *
+            p.distancia *
+            deformacion;
+
+        const y =
+            cy +
+            Math.sin(angulo) *
+            p.distancia *
+            0.48 *
+            deformacion;
+
+
+        let alpha = p.alpha;
+
+        /*
+           En móvil mantenemos las partículas
+           simples y sin sombras.
+        */
+
+        if (!esMovil) {
+
+            ctx.fillStyle =
+                p.tono > 0.65
+                    ? `rgba(255,220,90,${alpha})`
+                    : `rgba(255,245,180,${alpha})`;
+
+        } else {
+
+            ctx.fillStyle =
+                `rgba(255,225,100,${alpha * 0.8})`;
+        }
 
 
         ctx.beginPath();
 
-
         ctx.arc(
-
             x,
             y,
-
-            size,
-
+            p.tamaño,
             0,
             Math.PI * 2
-
         );
 
-
         ctx.fill();
-
     }
 
 
     /*
-       Anillos de la galaxia
+       ANILLO CENTRAL
     */
 
-    ctx.strokeStyle =
-        "rgba(255,210,55,.22)";
+    ctx.save();
 
-    ctx.lineWidth = 2;
+    ctx.translate(cx, cy);
 
-
-    ctx.beginPath();
-
-
-    ctx.ellipse(
-
-        centerX,
-        centerY,
-
-        maxRadius * .92,
-        maxRadius * .25,
-
-        0,
-
-        0,
-        Math.PI * 2
-
+    ctx.rotate(
+        -0.18 +
+        Math.sin(tiempo * 0.0001) * 0.02
     );
 
 
-    ctx.stroke();
+    const radioAnillo =
+        Math.min(ancho, alto) *
+        (esMovil ? 0.095 : 0.105);
 
 
-    ctx.strokeStyle =
-        "rgba(255,150,30,.15)";
+    /*
+       En móvil usamos un gradiente más sencillo.
+    */
 
-
-    ctx.beginPath();
-
-
-    ctx.ellipse(
-
-        centerX,
-        centerY,
-
-        maxRadius * .72,
-        maxRadius * .19,
-
-        0,
-
-        0,
-        Math.PI * 2
-
-    );
-
-
-    ctx.stroke();
-
-
-    drawBlackHole();
-
-}
-
-
-/* =========================================
-   ESTRELLAS
-========================================= */
-
-const stars = [];
-
-
-/*
-   PC:
-   140 estrellas
-
-   CELULAR:
-   55 estrellas
-*/
-
-const starCount =
-    esMovil
-        ? 55
-        : 140;
-
-
-for (
-    let i = 0;
-    i < starCount;
-    i++
-) {
-
-    stars.push({
-
-        x:
-            Math.random()
-            * width,
-
-        y:
-            Math.random()
-            * height,
-
-        size:
-            Math.random()
-            * 1.5
-            + .3,
-
-        phase:
-            Math.random()
-            * Math.PI
-            * 2
-
-    });
-
-}
-
-
-function drawStars(time) {
-
-
-    for (
-        let i = 0;
-        i < stars.length;
-        i++
-    ) {
-
-
-        const s =
-            stars[i];
-
-
-        const twinkle =
-
-            .35
-            +
-            (
-                Math.sin(
-                    time * .002
-                    +
-                    s.phase
-                )
-                + 1
-            )
-            * .25;
-
-
-        ctx.fillStyle =
-
-            `rgba(
-                255,
-                255,
-                220,
-                ${twinkle}
-            )`;
-
-
-        ctx.beginPath();
-
-
-        ctx.arc(
-
-            s.x,
-            s.y,
-
-            s.size,
-
+    const gradiente =
+        ctx.createRadialGradient(
             0,
-            Math.PI * 2
-
+            0,
+            radioAnillo * 0.35,
+            0,
+            0,
+            radioAnillo * 1.4
         );
 
 
-        ctx.fill();
+    gradiente.addColorStop(
+        0,
+        "rgba(255,210,30,0)"
+    );
 
+    gradiente.addColorStop(
+        0.45,
+        "rgba(255,190,20,0.35)"
+    );
+
+    gradiente.addColorStop(
+        0.72,
+        "rgba(255,225,80,0.9)"
+    );
+
+    gradiente.addColorStop(
+        0.86,
+        "rgba(255,160,0,0.3)"
+    );
+
+    gradiente.addColorStop(
+        1,
+        "rgba(255,130,0,0)"
+    );
+
+
+    ctx.fillStyle = gradiente;
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        0,
+        0,
+        radioAnillo * 1.65,
+        radioAnillo * 0.58,
+        0,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+
+    /*
+       AGUJERO NEGRO
+    */
+
+    const negro =
+        ctx.createRadialGradient(
+            0,
+            0,
+            0,
+            0,
+            0,
+            radioAnillo * 0.72
+        );
+
+    negro.addColorStop(
+        0,
+        "#000000"
+    );
+
+    negro.addColorStop(
+        0.75,
+        "#000000"
+    );
+
+    negro.addColorStop(
+        1,
+        "rgba(0,0,0,0.1)"
+    );
+
+    ctx.fillStyle = negro;
+
+    ctx.beginPath();
+
+    ctx.arc(
+        0,
+        0,
+        radioAnillo * 0.72,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+
+    /*
+       BRILLO CENTRAL SOLO EN PC
+    */
+
+    if (!esMovil) {
+
+        ctx.shadowColor =
+            "rgba(255,210,40,0.6)";
+
+        ctx.shadowBlur = 15;
+
+        ctx.strokeStyle =
+            "rgba(255,220,70,0.7)";
+
+        ctx.lineWidth = 2;
+
+        ctx.beginPath();
+
+        ctx.ellipse(
+            0,
+            0,
+            radioAnillo * 1.35,
+            radioAnillo * 0.42,
+            0,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.stroke();
+
+        ctx.shadowBlur = 0;
     }
 
+    ctx.restore();
 }
 
 
-/* =========================================
+/* =========================================================
+   FLORES
+========================================================= */
+
+const flores = [];
+
+function crearFlorCaida() {
+
+    flores.push({
+
+        tipo: "caida",
+
+        x: Math.random() * ancho,
+
+        y: -30,
+
+        tamaño:
+            esMovil
+                ? Math.random() * 8 + 7
+                : Math.random() * 11 + 8,
+
+        velocidad:
+            Math.random() * 0.7 + 0.45,
+
+        rotacion:
+            Math.random() * Math.PI * 2,
+
+        giro:
+            Math.random() * 0.025 - 0.012,
+
+        oscilacion:
+            Math.random() * Math.PI * 2,
+
+        vida: 1
+    });
+}
+
+
+function crearFlorLateral() {
+
+    flores.push({
+
+        tipo: "lateral",
+
+        x:
+            Math.random() > 0.5
+                ? -20
+                : ancho + 20,
+
+        y:
+            Math.random() * alto,
+
+        tamaño:
+            esMovil
+                ? Math.random() * 7 + 6
+                : Math.random() * 10 + 7,
+
+        velocidad:
+            Math.random() * 0.6 + 0.25,
+
+        rotacion:
+            Math.random() * Math.PI * 2,
+
+        giro:
+            Math.random() * 0.02 - 0.01,
+
+        oscilacion:
+            Math.random() * Math.PI * 2,
+
+        vida: 1,
+
+        direccion:
+            Math.random() > 0.5
+                ? 1
+                : -1
+    });
+}
+
+
+function dibujarFlor(flor) {
+
+    ctx.save();
+
+    ctx.translate(
+        flor.x,
+        flor.y
+    );
+
+    ctx.rotate(flor.rotacion);
+
+    const s = flor.tamaño;
+
+
+    /*
+       Centro
+    */
+
+    ctx.fillStyle =
+        "#e6a900";
+
+    ctx.beginPath();
+
+    ctx.arc(
+        0,
+        0,
+        s * 0.28,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+
+    /*
+       Pétalos
+    */
+
+    ctx.fillStyle =
+        "#ffd92f";
+
+    for (let i = 0; i < 6; i++) {
+
+        const angulo =
+            (Math.PI * 2 / 6) * i;
+
+        const px =
+            Math.cos(angulo) *
+            s * 0.48;
+
+        const py =
+            Math.sin(angulo) *
+            s * 0.48;
+
+        ctx.beginPath();
+
+        ctx.ellipse(
+            px,
+            py,
+            s * 0.38,
+            s * 0.18,
+            angulo,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+    }
+
+    ctx.restore();
+}
+
+
+function actualizarFlores() {
+
+    for (let i = flores.length - 1; i >= 0; i--) {
+
+        const flor = flores[i];
+
+        flor.rotacion += flor.giro;
+
+        flor.oscilacion += 0.025;
+
+
+        if (flor.tipo === "caida") {
+
+            flor.y += flor.velocidad;
+
+            flor.x +=
+                Math.sin(flor.oscilacion) *
+                0.35;
+
+        } else {
+
+            flor.x +=
+                flor.velocidad *
+                flor.direccion;
+
+            flor.y +=
+                Math.sin(flor.oscilacion) *
+                0.25;
+        }
+
+
+        dibujarFlor(flor);
+
+
+        if (
+            flor.y > alto + 50 ||
+            flor.x < -60 ||
+            flor.x > ancho + 60
+        ) {
+
+            flores.splice(i, 1);
+        }
+    }
+}
+
+
+/* =========================================================
    FOTOS ORBITANDO
-========================================= */
+========================================================= */
 
 const fotos = [
 
-    document.getElementById(
-        "foto1"
-    ),
-
-    document.getElementById(
-        "foto2"
-    ),
-
-    document.getElementById(
-        "foto3"
-    )
+    document.getElementById("foto1"),
+    document.getElementById("foto2"),
+    document.getElementById("foto3")
 
 ];
 
 
-function actualizarFotos(time) {
+function actualizarFotos(tiempo) {
+
+    const radio =
+        Math.min(ancho, alto) *
+        (esMovil ? 0.19 : 0.23);
 
 
-    const radioBase =
-
-        Math.min(
-            width,
-            height
-        )
-        * .34;
+    const velocidad =
+        esMovil
+            ? 0.00018
+            : 0.00022;
 
 
-    fotos.forEach(
+    for (let i = 0; i < fotos.length; i++) {
 
-        (foto, index) => {
+        const foto = fotos[i];
 
-
-            const angulo =
-
-                rotation * .75
-
-                +
-
-                time * .00025
-
-                +
-
-                index
-                *
-                (
-                    Math.PI * 2 / 3
-                );
+        const angulo =
+            tiempo * velocidad +
+            (Math.PI * 2 / 3) * i;
 
 
-            const profundidad =
-
-                (
-                    Math.sin(
-                        angulo
-                    )
-                    + 1
-                )
-                / 2;
+        const x =
+            Math.cos(angulo) *
+            radio;
 
 
-            const radio =
-
-                radioBase
-                *
-                (
-                    .82
-                    +
-                    profundidad
-                    * .18
-                );
+        const y =
+            Math.sin(angulo) *
+            radio *
+            0.72;
 
 
-            const x =
-
-                Math.cos(
-                    angulo
-                )
-                * radio;
+        const escala =
+            0.82 +
+            ((y / radio) + 1) *
+            0.08;
 
 
-            const y =
-
-                Math.sin(
-                    angulo
-                )
-                * radio
-                * .48;
+        const opacidad =
+            0.72 +
+            ((y / radio) + 1) *
+            0.14;
 
 
-            const escala =
+        foto.style.transform =
+            `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(${escala})`;
 
-                .72
-                +
-                profundidad
-                * .48;
+        foto.style.opacity =
+            opacidad.toFixed(2);
 
-
-            const opacidad =
-
-                .55
-                +
-                profundidad
-                * .45;
-
-
-            const tamaño =
-
-                (
-                    esMovil
-                        ? 90
-                        : 125
-                )
-                *
-                escala;
-
-
-            foto.style.width =
-                tamaño + "px";
-
-            foto.style.height =
-                tamaño + "px";
-
-            foto.style.opacity =
-                opacidad;
-
-
-            foto.style.zIndex =
-
-                10
-                +
-                Math.floor(
-                    profundidad * 15
-                );
-
-
-            foto.style.transform =
-
-                `translate(
-                    ${x - tamaño / 2}px,
-                    ${y - tamaño / 2}px
-                )
-                rotate(
-                    ${angulo * 25}deg
-                )`;
-
-        }
-
-    );
-
+        foto.style.zIndex =
+            y > 0 ? 12 : 8;
+    }
 }
 
 
-/* =========================================
+/* =========================================================
    ANIMACIÓN PRINCIPAL
-========================================= */
-
-
-/*
-   En PC:
-   hasta la frecuencia normal.
-
-   En celular:
-   máximo aproximado de 45 FPS.
-*/
+========================================================= */
 
 let ultimoFrame = 0;
 
-const intervaloMovil =
-    1000 / 45;
+const intervaloFrame =
+    esMovil
+        ? 1000 / 45
+        : 1000 / 60;
 
 
-function animate(time) {
+function animar(tiempo) {
 
-
-    if (
-
-        esMovil
-        &&
-        time - ultimoFrame
-        <
-        intervaloMovil
-
-    ) {
-
-        requestAnimationFrame(
-            animate
-        );
-
-        return;
-
-    }
-
-
-    ultimoFrame =
-        time;
-
-
-    drawGalaxy(time);
-
-    drawStars(time);
-
-    actualizarFotos(time);
-
-
-    requestAnimationFrame(
-        animate
-    );
-
-}
-
-
-requestAnimationFrame(
-    animate
-);
-
-
-/* =========================================
-   FLORES
-========================================= */
-
-const inicio =
-    document.getElementById(
-        "inicio"
-    );
-
-
-const mensaje =
-    document.getElementById(
-        "mensaje"
-    );
-
-
-const ayuda =
-    document.getElementById(
-        "ayuda"
-    );
-
-
-const musica =
-    document.getElementById(
-        "musica"
-    );
-
-
-const floresCaidas =
-    document.getElementById(
-        "flores-caidas"
-    );
-
-
-let iniciada =
-    false;
-
-
-/* =========================================
-   FLOR QUE CAE
-========================================= */
-
-function crearFlorCaida() {
-
-
-    if (!iniciada)
-        return;
-
-
-    const flor =
-        document.createElement(
-            "div"
-        );
-
-
-    flor.className =
-        "flor-cayendo";
-
-
-    flor.textContent =
-        "🌻";
-
-
-    flor.style.left =
-
-        Math.random()
-        * 100
-        + "%";
-
-
-    const tamaño =
-
-        17
-        +
-        Math.random()
-        * 23;
-
-
-    flor.style.fontSize =
-        tamaño + "px";
-
-
-    const duracion =
-
-        5
-        +
-        Math.random()
-        * 5;
-
-
-    flor.style.animationDuration =
-
-        duracion
-        + "s";
-
-
-    floresCaidas.appendChild(
-        flor
-    );
-
-
-    setTimeout(
-
-        () => {
-
-            flor.remove();
-
-        },
-
-        (duracion + 2)
-        * 1000
-
-    );
-
-}
-
-
-/* =========================================
-   FLOR LATERAL
-========================================= */
-
-function crearFlorLateral() {
-
-
-    if (!iniciada)
-        return;
-
-
-    const flor =
-        document.createElement(
-            "div"
-        );
-
-
-    flor.className =
-        "flor-lateral";
-
-
-    const izquierda =
-        Math.random() > .5;
-
-
-    flor.classList.add(
-
-        izquierda
-            ? "flor-izquierda"
-            : "flor-derecha"
-
-    );
-
-
-    flor.textContent =
-        "🌻";
-
-
-    flor.style.top =
-
-        (
-            15
-            +
-            Math.random() * 70
-        )
-        + "vh";
-
-
-    const movimiento =
-
-        90
-        +
-        Math.random() * 120;
-
-
-    flor.style.setProperty(
-
-        "--movimiento",
-
-        (
-            izquierda
-                ? movimiento
-                : -movimiento
-        )
-        + "px"
-
-    );
-
-
-    flor.style.fontSize =
-
-        (
-            18
-            +
-            Math.random() * 20
-        )
-        + "px";
-
-
-    const duracion =
-
-        5
-        +
-        Math.random() * 4;
-
-
-    flor.style.animationDuration =
-
-        duracion
-        + "s";
-
-
-    floresCaidas.appendChild(
-        flor
-    );
-
-
-    setTimeout(
-
-        () => {
-
-            flor.remove();
-
-        },
-
-        (duracion + 1)
-        * 1000
-
-    );
-
-}
-
-
-/* =========================================
-   INICIO
-========================================= */
-
-function comenzar() {
-
-
-    if (iniciada)
-        return;
-
-
-    iniciada = true;
-
-
-    musica.volume =
-        .85;
-
-
-    musica.play()
-        .catch(
-            () => {}
-        );
-
-
-    inicio.classList.add(
-        "ocultar"
-    );
-
-
-    setTimeout(
-
-        () => {
-
-            mensaje.classList.add(
-                "mostrar"
-            );
-
-        },
-
-        2200
-
-    );
+    requestAnimationFrame(animar);
 
 
     /*
-       PC:
-       más flores.
-
-       CELULAR:
-       menos flores para evitar lag.
+       Limitamos los frames en celular.
+       Esto evita que el navegador trabaje
+       innecesariamente a 60/90/120 FPS.
     */
 
-    setInterval(
+    if (
+        tiempo - ultimoFrame <
+        intervaloFrame
+    ) {
+        return;
+    }
 
-        crearFlorCaida,
+    ultimoFrame = tiempo;
 
-        esMovil
-            ? 950
-            : 650
 
+    /*
+       Fondo
+    */
+
+    ctx.fillStyle = "#000";
+
+    ctx.fillRect(
+        0,
+        0,
+        ancho,
+        alto
     );
 
 
-    setInterval(
+    dibujarEstrellas();
 
-        crearFlorLateral,
+    dibujarGalaxia(tiempo);
 
-        esMovil
-            ? 2200
-            : 1400
+    actualizarFlores();
 
-    );
-
-
-    setTimeout(
-
-        () => {
-
-            ayuda.classList.add(
-                "ocultar"
-            );
-
-        },
-
-        9000
-
-    );
-
+    actualizarFotos(tiempo);
 }
 
 
-/* =========================================
-   EVENTOS
-========================================= */
-
-inicio.addEventListener(
-
-    "pointerdown",
-
-    comenzar
-
-);
+requestAnimationFrame(animar);
 
 
-document.addEventListener(
+/* =========================================================
+   INICIO
+========================================================= */
 
-    "keydown",
+const intro =
+    document.getElementById("intro");
 
-    e => {
+const mensaje =
+    document.getElementById("mensaje");
 
-        if (
+const ayuda =
+    document.getElementById("ayuda");
 
-            e.code === "Space"
-            ||
-            e.code === "Enter"
+const musica =
+    document.getElementById("musica");
 
-        ) {
 
-            comenzar();
+let iniciado = false;
 
-        }
 
+function comenzar() {
+
+    if (iniciado) {
+        return;
     }
 
+    iniciado = true;
+
+
+    /*
+       Música después del toque del usuario.
+    */
+
+    musica.volume = 0.65;
+
+    const promesa =
+        musica.play();
+
+    if (promesa !== undefined) {
+
+        promesa.catch(() => {
+            /*
+               El navegador puede bloquear
+               el audio; no detenemos la página.
+            */
+        });
+    }
+
+
+    intro.classList.add("oculto");
+
+
+    /*
+       Mostramos el mensaje después de un
+       pequeño retraso.
+
+       En móvil usamos un retraso ligeramente
+       mayor para que la transición no coincida
+       exactamente con la desaparición del intro.
+    */
+
+    const retraso =
+        esMovil
+            ? 900
+            : 700;
+
+
+    setTimeout(() => {
+
+        mensaje.classList.add("mostrar");
+
+    }, retraso);
+
+
+    setTimeout(() => {
+
+        ayuda.classList.add("mostrar");
+
+    }, 2500);
+
+
+    /*
+       Flores.
+    */
+
+    const intervaloFlores =
+        esMovil
+            ? 1050
+            : 650;
+
+
+    const intervaloLaterales =
+        esMovil
+            ? 2400
+            : 1400;
+
+
+    crearFlorCaida();
+
+
+    setInterval(
+        crearFlorCaida,
+        intervaloFlores
+    );
+
+
+    setInterval(
+        crearFlorLateral,
+        intervaloLaterales
+    );
+}
+
+
+/* =========================================================
+   CLICK / TOQUE PARA INICIAR
+========================================================= */
+
+intro.addEventListener(
+    "click",
+    comenzar,
+    {
+        passive: true
+    }
 );
 
+intro.addEventListener(
+    "touchend",
+    comenzar,
+    {
+        passive: true
+    }
+);
 
 </script>
 
 </body>
-
 </html>
