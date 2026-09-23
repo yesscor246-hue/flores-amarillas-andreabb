@@ -1440,6 +1440,28 @@ function crearFlorLateral() {
    INICIO + AUDIO
 ========================================= */
 
+function reproducirMusica() {
+
+    musica.muted = false;
+    musica.volume = 1.0;
+
+    const reproduccion = musica.play();
+
+    if (reproduccion !== undefined) {
+
+        reproduccion
+            .then(() => {
+                console.log("🎵 Música iniciada");
+            })
+            .catch(error => {
+                console.log(
+                    "El celular bloqueó el primer intento de audio.",
+                    error
+                );
+            });
+    }
+}
+
 function comenzar() {
 
     if (iniciada)
@@ -1447,37 +1469,10 @@ function comenzar() {
 
     iniciada = true;
 
-    /*
-       IMPORTANTE:
-       play() se ejecuta directamente
-       después del toque del usuario.
-    */
-
     musica.volume = 1.0;
-musica.muted = false;
+    musica.muted = false;
 
-const reproduccion =
-    musica.play();
-
-    if (reproduccion !== undefined) {
-
-        reproduccion
-            .then(() => {
-
-                console.log(
-                    "🎵 Música iniciada"
-                );
-
-            })
-            .catch(error => {
-
-                console.error(
-                    "Error al reproducir:",
-                    error
-                );
-
-            });
-    }
+    reproducirMusica();
 
     inicio.classList.add(
         "ocultar"
@@ -1523,8 +1518,24 @@ const reproduccion =
 
 inicio.addEventListener(
     "pointerdown",
-    comenzar,
-    { once: true }
+    comenzar
+);
+
+inicio.addEventListener(
+    "touchend",
+    () => {
+        if (musica.paused)
+            reproducirMusica();
+    },
+    { passive: true }
+);
+
+inicio.addEventListener(
+    "click",
+    () => {
+        if (musica.paused)
+            reproducirMusica();
+    }
 );
 
 document.addEventListener(
