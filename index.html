@@ -1454,9 +1454,11 @@ function comenzar() {
     */
 
     musica.volume = 1.0;
+musica.muted = false;
+musica.load();
 
-    const reproduccion =
-        musica.play();
+const reproduccion =
+    musica.play();
 
     if (reproduccion !== undefined) {
 
